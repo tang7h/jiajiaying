@@ -1,0 +1,142 @@
+<?php
+header("Content-Type:text/html;Charset=utf-8");
+include('./data.php');
+?>
+
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+	<meta Charset="UTF-8" content="html/text">
+	<title>快乐十分加加赢</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<div class="header">
+		<img src="kuaileshifen.png" class="logo"/>
+		<h1>加加赢</h1>
+	</div>
+	<section class="hot-and-cold">
+		<div> 近20期热号：<span class="hot"></span></div>
+		<div> 近20期冷号：<span class="cold"></span></div>
+	</section>
+	<section class="today">
+		<div class="cards">
+			<div class="card-wrapper">
+				<h2>今日号码推荐</h2>
+				<div class="card">
+					<div class="row column-header">
+						<div class="cell row-header"></div>
+						<div class="cell">第一组号</div>
+						<div class="cell">第二组号</div>
+						<div class="cell">第三组号</div>
+						<div class="cell">第四组号</div>
+					</div>
+					<div class="row row-data">
+						<div class="cell row-header">号码(任三)</div>
+						<div class="cell data recommend"><?php echo $F_1[0],"  ", $F_1[1],"  ", $F_1[2];?></div>
+						<div class="cell data recommend"><?php echo $F_2[0],"  ", $F_2[1],"  ", $F_2[2];?></div>
+						<div class="cell data recommend"><?php echo $F_3[0],"  ", $F_3[1],"  ", $F_3[2];?></div>
+						<div class="cell data recommend"><?php echo $F_4[0],"  ", $F_4[1],"  ", $F_4[2];?></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="row row-data">
+				<div class="cell row-header">上轮推中号码</div>
+				<div class="cell data guessed">11</div>
+				<div class="cell data guessed">11</div>
+				<div class="cell data guessed">11</div>
+			</div>
+			<div class="row-group">
+				<div class="row row-data">
+					<div class="cell row-header">昨日推中次数</div>
+					<div class="cell data guessed-times">11</div>
+				</div>
+				<div class="row row-data">
+					<div class="cell row-header">最低中奖金额</div>
+					<div class="cell data guessed-value">11</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<h2>短期高倍守号查询表（以5期为例）</h2>
+		<div class="card">
+			<div class="row">
+				<div class="cell row-header">投注倍数</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+			</div>
+			<div class="row">
+				<div class="cell row-header">5期投注总金额</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+			</div>
+			<div class="row">
+				<div class="cell row-header">5期出号盈利金额</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+				<div class="cell data">11</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="foot"> 云南拾起电子商务有限公司 </div>
+	</footer>
+	<script>
+		var xmlhttp = new XMLHttpRequest();
+		var data = JSON.parse('{"Rk":[19,7,14],"Lk":[2,11,8],"F":[["6","5","3"],["6","3","20"],["13","16","14"],["7","15","10"]],"num":["6  3  20","6  5  3","13  16  14"],"sum":[18,5,600]}')
+		var getData = function(){
+			xmlhttp.open('GET','http://www.zhiliaogou.cn/lottery/data.php',true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange = function(){
+				if(xmlhttp.readyState==4 && xmlhttp.status==200){
+					console.log(xmlhttp.responseText)
+				}
+			}
+		}
+		var reFreshDOM = function(){
+			document.getElementsByClassName('hot')[0].innerHTML = data.Rk.join(' ')
+			document.getElementsByClassName('cold')[0].innerHTML = data.Lk.join(' ')
+			for(var i in [0,1,2,3]){
+				document.getElementsByClassName('recommend')[i].innerHTML = data.F[i].join(', ')
+			}
+			for(var i in [0,1,2]){
+				document.getElementsByClassName('guessed')[i].innerHTML = data.num[i]
+			}
+			document.getElementsByClassName('guessed-times')[0].innerHTML = data.sum[0]
+			document.getElementsByClassName('guessed-value')[0].innerHTML = data.sum[2]
+			console.log('refreshed');
+		}
+		window.onload = function(){
+			console.log(data);
+			reFreshDOM();
+			timer = window.setInterval(reFreshDOM,10000)
+		}
+	</script>
+</body>
+</html>
