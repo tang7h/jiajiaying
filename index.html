@@ -48,6 +48,9 @@
 				<div class="cell data guessed">7 5 6</div>
 				<div class="cell data guessed">7 15 10</div>
 				<div class="cell data guessed">17 19 15</div>
+				<div class="cell data guessed">7 5 6</div>
+				<div class="cell data guessed">7 15 10</div>
+				<div class="cell data guessed">17 19 15</div>
 			</div>
 		</div>
 		<div class="card">
@@ -127,7 +130,7 @@
 			for(var i in [0,1,2,3,4,5]){
 				document.getElementsByClassName('recommend')[i].innerHTML = data.F[i].join(', ')
 			}
-			for(var i in [0,1,2]){
+			for(var i in [0,1,2,3,4,5]){
 				document.getElementsByClassName('guessed')[i].innerHTML = data.num[i]
 			}
 			document.getElementsByClassName('guessed-times')[0].innerHTML = data.sum[0]
