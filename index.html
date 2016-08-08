@@ -124,7 +124,7 @@
 		var refreshDOM = function(){
 			document.getElementsByClassName('hot')[0].innerHTML = data.Rk.join(' ')
 			document.getElementsByClassName('cold')[0].innerHTML = data.Lk.join(' ')
-			for(var i in [0,1,2,3]){
+			for(var i in [0,1,2,3,4,5]){
 				document.getElementsByClassName('recommend')[i].innerHTML = data.F[i].join(', ')
 			}
 			for(var i in [0,1,2]){
