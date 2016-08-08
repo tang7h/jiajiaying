@@ -8,9 +8,9 @@ html {
 }
 body {
 	color: rgba(0,0,0,.87);
-	background: #D32F2F;
-	background: linear-gradient(160deg,#EF5350,#B71C1C);
-	padding: 24px 40px;
+	background: url(beijing.jpg)no-repeat center;
+	background-size: cover;
+	padding: 0 40px 24px;
 	height: 100%;
 	overflow: hidden;
 	display: flex;
@@ -19,10 +19,11 @@ body {
 	margin: 0;
 }
 .header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex: 0 1 auto;
+	flex: none;
+	margin-bottom: -80px;
+}
+.header img {
+	width: 100%;
 }
 h1{
 	text-align: center;
@@ -32,36 +33,26 @@ h1{
 }
 h2{
 	font-size: 1.2em;
+	margin: 0 0 4px;
 }
 .logo {
 	width: 20%;
 	max-width: 200px;
 }
 .hot-and-cold {
-	color: #FFF59D;
-	font-weight: 600;
+	align-self: flex-start;
 }
-.hot, .cold {
-	margin-right: 2em;
+.hot-and-cold .cell {
+	min-width: 9em;
 }
 .content {
 	border-radius: 2px;
 }
-h2 {
-	color: #fff;
-	margin: 16px 0 8px;
-	font-weight: 500;
-}
 .card {
-	background: #fff;
 	border-radius: 2px;
 	margin-bottom: 8px;
-}
-.today .row-data .cell.data:not(:first-child) {
-	color: #F44336;
-}
-.today .cell {
-	flex: 1 0;
+	background: rgba(45, 157, 165, 0.57);
+	color: #fff;
 }
 .row-group {
 	display: flex;
@@ -69,32 +60,51 @@ h2 {
 .row {
 	flex: 1 0 auto;
 	display: flex;
-	border-bottom: 1px solid rgba(0,0,0,.12);
+	border-bottom: 1px solid rgba(255,255,255,.3);
 }
 .row:last-child {
 	border: none;
 }
 .cell {
 	flex: 1 1 8%;
-	line-height: 48px;
+	line-height: 1.8em;
 	text-align: center;
 	white-space: nowrap;
+	border-right: 1px solid rgba(255,255,255,.3);
 }
 .row-header {
 	flex: 0 1 9em;
 	text-align: left;
 	margin-left: 1em;
 }
-.column-header {
-	color: rgba(0,0,0,.54);
-}
 .note {
 	font-size: .8em;
-	color: #fff;
-	margin-left: 1rem;
+	margin: 0;
 }
 .foot {
 	text-align: right;
 	font-size: .8em;
 	color: rgba(0,0,0,.38);
+}
+.yellow {
+	color: orange;
+}
+.yellow-back {
+	color: #fff;
+	background: orange;
+}
+.gray {
+	background: rgba(208, 208, 208, 0.55);
+	color: rgba(0,0,0,.87);
+	font-weight: 700;
+}
+.yellow-back .cell.data,
+.gray .cell.data {
+	font-weight: 700;
+	font-size: 1.5rem;
+}
+.yellow-back .row-header,
+.gray .row-header {
+	display: flex;
+	align-items: center;
 }
